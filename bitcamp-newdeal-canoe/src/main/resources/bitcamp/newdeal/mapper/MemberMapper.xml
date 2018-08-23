@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.newdeal.repository.MemberRepository">
+
+	<resultMap type="member" id="memberMap">
+		<id column="MNO" property="memberNo" />
+		<result column="MID" property="memberId" />
+		<result column="NAME" property="memberName" />
+		<result column="PWD" property="memberPwd" />
+		<result column="SDT" property="memberEntryDate" />
+		<result column="MDT" property="memberModifyDate" />
+	</resultMap>
+
+	<select id="selectList" resultMap="memberMap">
+		select *
+		from P0_MEMB
+	</select>
+	
+	<select id="findByIdAndPassword" parameterType="map" resultMap="memberMap">
+	   SELECT *
+	   FROM P0_MEMB
+	   WHERE MID=#{id} AND PWD=PASSWORD(#{password})
+	</select>
+</mapper>
+
+
+
+
